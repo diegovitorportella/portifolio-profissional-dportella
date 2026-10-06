@@ -35,16 +35,27 @@ const experiences = [
 export function Experience() {
   return (
     <div className="max-w-4xl mx-auto space-y-12">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">Experiências</h2>
-        <p className="text-zinc-400 text-lg">Meu histórico profissional e evolução na área de tecnologia.</p>
+      
+      {/* CABEÇALHO (Estilo Figma) */}
+      <div className="text-left space-y-4 mb-16">
+        <span className="text-blue-500 text-[11px] font-bold tracking-[0.15em] uppercase block">
+          Experiências
+        </span>
+        <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-white tracking-tight leading-[1.08]">
+          Onde venho construindo.
+        </h2>
+        <p className="text-[#8c929f] text-base leading-[1.7] max-w-2xl">
+          Experiências que fortaleceram minha visão de produto, qualidade e trabalho em equipe.
+        </p>
       </div>
 
+      {/* CORPO (Estilo Clean / Anterior) */}
       <div className="relative border-l border-zinc-800 ml-4 md:ml-6 space-y-12 pb-4">
         {experiences.map((exp, index) => (
           <div key={index} className="relative pl-8 md:pl-12">
-            {/* Marcador da Linha do Tempo */}
-            <div className="absolute -left-1.25 top-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 ring-4 ring-black" />
+            
+            {/* Marcador da Linha do Tempo (Ajustado para a cor de fundo correta) */}
+            <div className="absolute -left-1.25 top-1.5 w-2.5 h-2.5 rounded-full bg-blue-500 ring-4 ring-[#08090a]" />
             
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -74,7 +85,7 @@ export function Experience() {
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {exp.tags.map((tag, i) => (
-                  <span key={i} className="text-xs font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-md">
+                  <span key={i} className="text-[11px] font-semibold text-[#8bbcff] bg-blue-500/10 border border-blue-500/20 px-2.5 py-1.5 rounded-lg">
                     {tag}
                   </span>
                 ))}
@@ -83,6 +94,7 @@ export function Experience() {
           </div>
         ))}
       </div>
+      
     </div>
   );
 }

@@ -90,13 +90,24 @@ export function About() {
         </div>
       </div>
 
-      {/* Coluna da Imagem */}
-      <div className="w-56 h-56 md:w-80 md:h-80 shrink-0 relative rounded-full overflow-hidden border-4 border-zinc-800 shadow-2xl">
-        <img
-          src="https://github.com/diegovitorportella.png"
-          alt="Foto de perfil de Diego Portella"
-          className="object-cover w-full h-full"
-        />
+      {/* Coluna da Imagem - Estilo Retangular Tech */}
+      <div className="relative shrink-0 w-64 md:w-80 aspect-4/5 p-3">
+        {/* Cantos Azuis (Estilo Mira/Tech) */}
+        <div className="absolute top-0 left-0 w-6 h-6 border-t-[3px] border-l-[3px] border-blue-500" />
+        <div className="absolute top-0 right-0 w-6 h-6 border-t-[3px] border-r-[3px] border-blue-500" />
+        <div className="absolute bottom-0 left-0 w-6 h-6 border-b-[3px] border-l-[3px] border-blue-500" />
+        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-[3px] border-r-[3px] border-blue-500" />
+
+        {/* Container da Foto */}
+        <div className="w-full h-full relative overflow-hidden bg-[#0d0f12] border border-white/5 rounded-sm">
+          <img
+            src="https://github.com/diegovitorportella.png"
+            alt="Foto de perfil de Diego Portella"
+            className="object-cover w-full h-full grayscale-15 contrast-110"
+          />
+          {/* Efeito de desvanecimento escuro na base igual à imagem de referência */}
+          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-[#08090a] via-[#08090a]/80 to-transparent" />
+        </div>
       </div>
     </div>
   );
