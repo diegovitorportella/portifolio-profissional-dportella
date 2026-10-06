@@ -6,37 +6,37 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <>
-      <div className="container mx-auto px-6">
+    <main className="flex-1 flex flex-col relative w-full pt-18">
+      <div className="container mx-auto px-6 max-w-295">
         
-        <section id="sobre" className="min-h-[calc(100vh-4rem)] flex items-center py-20">
+        <section id="sobre" className="py-24 md:py-32">
           <About />
         </section>
 
-        <section id="resume" className="py-24 border-t border-zinc-800/50">
+        <section id="resume" className="py-24 border-t border-white/5">
           <Resume />
         </section>
 
-        <section id="projetos" className="py-24 border-t border-zinc-800/50">
+        <section id="projetos" className="py-24 border-t border-white/5">
           <Projects />
         </section>
 
-        <section id="experiencias" className="py-24 border-t border-zinc-800/50">
+        <section id="experiencias" className="py-24 border-t border-white/5">
           <Experience />
         </section>
 
-        <section id="contato" className="py-24 border-t border-zinc-800/50">
+        <section id="contato" className="py-24 border-t border-white/5">
           <Contact />
         </section>
 
       </div>
 
-      {/* Footer Minimalista */}
-      <footer className="border-t border-zinc-800/50 bg-black py-8 mt-12">
-        <div className="container mx-auto px-6 text-center text-zinc-500 text-sm font-medium">
-          <p>Desenvolvido por Diego Portella &copy; {new Date().getFullYear()}</p>
+      <footer className="border-t border-white/5 bg-[#08090a] py-8 mt-auto">
+        <div className="container mx-auto px-6 text-center md:flex md:items-center md:justify-between max-w-295">
+          <p className="text-zinc-500 text-[12px]">Desenvolvido por <strong className="text-[#b5bac5] font-medium">Diego Portella</strong> &copy; {new Date().getFullYear()}</p>
+          <a href="#sobre" className="text-zinc-500 text-[12px] hover:text-blue-400 transition-colors mt-4 md:mt-0 inline-block">Voltar ao topo &uarr;</a>
         </div>
       </footer>
-    </>
+    </main>
   );
 }
