@@ -1,24 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-:root {
-  color-scheme: dark;
-  font-family: "Inter", sans-serif;
-  font-synthesis: none;
-
-  --background: #08090a;
-  --surface: #0d0f12;
-  --surface-raised: #11141a;
-  --foreground: #f7f8fa;
-  --muted: #8c929f;
-  --muted-light: #b5bac5;
-  --border: #20242c;
-  --border-hover: #343b48;
-  --accent: #3b82f6;
-  --accent-hover: #60a5fa;
-  --accent-muted: rgba(59, 130, 246, 0.12);
-  --radius: 14px;
-}
+/* O VS Code vai sublinhar isto de amarelo, mas está 100% correto no Tailwind v4 */
+@custom-variant dark (&:is(.dark *));
 
 html {
   scroll-behavior: smooth;
@@ -26,8 +10,5 @@ html {
 }
 
 body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
   -webkit-font-smoothing: antialiased;
 }
