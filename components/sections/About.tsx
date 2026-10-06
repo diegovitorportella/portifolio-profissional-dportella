@@ -11,7 +11,7 @@ export function About() {
     <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-24">
       <div className="flex-1 space-y-6 text-center md:text-left">
         
-        {/* Nova Tag de Status no lugar dos botões */}
+        {/* Tag de Status */}
         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold border border-blue-200 dark:border-blue-500/20 mb-2">
           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
           {lang === "pt" ? "Construindo soluções escaláveis" : "Building scalable solutions"}
@@ -58,8 +58,7 @@ export function About() {
         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-[3px] border-r-[3px] border-blue-500" />
 
         <div className="w-full h-full relative overflow-hidden bg-zinc-100 dark:bg-[#0d0f12] border border-zinc-200 dark:border-white/5 rounded-sm">
-          <img src="https://github.com/diegovitorportella.png" alt="Foto de perfil de Diego Portella" className="object-cover w-full h-full grayscale-15 contrast-110" />
-          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-zinc-50 dark:from-[#08090a] via-zinc-50/80 dark:via-[#08090a]/80 to-transparent" />
+          <img src="/perfil.png" alt="Foto de perfil de Diego Portella" className="object-cover w-full h-full grayscale-15 contrast-110" />
         </div>
       </div>
     </div>
