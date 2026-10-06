@@ -1,50 +1,30 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function About() {
-  const [lang, setLang] = useState<"pt" | "en">("pt");
+  const { lang } = useLanguage();
 
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-24">
-      {/* Coluna do Texto */}
       <div className="flex-1 space-y-6 text-center md:text-left">
+        
+        {/* Nova Tag de Status no lugar dos botões */}
+        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold border border-blue-200 dark:border-blue-500/20 mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+          {lang === "pt" ? "Construindo soluções escaláveis" : "Building scalable solutions"}
+        </span>
+
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Olá, sou o <span className="text-blue-500">Diego Portella</span>
+          {lang === "pt" ? "Olá, sou o " : "Hi, I'm "}
+          <span className="text-blue-500">Diego Portella</span>
         </h1>
         <h2 className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-medium">
-          Estudante de Engenharia de Software & Full-Stack Developer
+          {lang === "pt" ? "Estudante de Engenharia de Software & Full-Stack Developer" : "Software Engineering Student & Full-Stack Developer"}
         </h2>
 
-        {/* Toggle de Idioma */}
-        <div className="flex items-center justify-center md:justify-start gap-2 pt-2">
-          <div className="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-900 p-1 rounded-lg border border-zinc-200 dark:border-zinc-800 transition-colors">
-            <button
-              onClick={() => setLang("pt")}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
-                lang === "pt"
-                  ? "bg-white dark:bg-zinc-800 text-blue-600 dark:text-blue-400 shadow-sm border border-zinc-200 dark:border-transparent"
-                  : "text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
-              }`}
-            >
-              PT
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
-                lang === "en"
-                  ? "bg-white dark:bg-zinc-800 text-blue-600 dark:text-blue-400 shadow-sm border border-zinc-200 dark:border-transparent"
-                  : "text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
-              }`}
-            >
-              EN
-            </button>
-          </div>
-        </div>
-
-        {/* Texto de Apresentação */}
         <div className="text-zinc-600 dark:text-zinc-300 leading-relaxed space-y-4 text-base md:text-lg">
           {lang === "pt" ? (
             <>
@@ -61,36 +41,24 @@ export function About() {
           )}
         </div>
 
-        {/* Botões de Ação */}
         <div className="flex items-center justify-center md:justify-start gap-4 pt-4">
-          <Link 
-            href="#projetos"
-            className={buttonVariants({ className: "bg-blue-600 hover:bg-blue-700 text-white border-0 h-12 px-6 rounded-lg font-medium shadow-md" })}
-          >
-            Ver Projetos
+          <Link href="#projetos" className={buttonVariants({ className: "bg-blue-600 hover:bg-blue-700 text-white border-0 h-12 px-6 rounded-lg font-medium shadow-md" })}>
+            {lang === "pt" ? "Ver Projetos" : "View Projects"}
           </Link>
-          <Link 
-            href="#contato"
-            className={buttonVariants({ variant: "outline", className: "border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 bg-transparent h-12 px-6 rounded-lg font-medium" })}
-          >
-            Contato
+          <Link href="#contato" className={buttonVariants({ variant: "outline", className: "border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 bg-transparent h-12 px-6 rounded-lg font-medium" })}>
+            {lang === "pt" ? "Contato" : "Contact"}
           </Link>
         </div>
       </div>
 
-      {/* Coluna da Imagem */}
-      <div className="relative shrink-0 w-64 md:w-80 aspect-4/5 p-3">
+      <div className="relative shrink-0 w-64 md:w-80 aspect-4/5 p-3 mt-4 md:mt-0">
         <div className="absolute top-0 left-0 w-6 h-6 border-t-[3px] border-l-[3px] border-blue-500" />
         <div className="absolute top-0 right-0 w-6 h-6 border-t-[3px] border-r-[3px] border-blue-500" />
         <div className="absolute bottom-0 left-0 w-6 h-6 border-b-[3px] border-l-[3px] border-blue-500" />
         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-[3px] border-r-[3px] border-blue-500" />
 
         <div className="w-full h-full relative overflow-hidden bg-zinc-100 dark:bg-[#0d0f12] border border-zinc-200 dark:border-white/5 rounded-sm">
-          <img
-            src="https://github.com/diegovitorportella.png"
-            alt="Foto de perfil de Diego Portella"
-            className="object-cover w-full h-full grayscale-15 contrast-110"
-          />
+          <img src="https://github.com/diegovitorportella.png" alt="Foto de perfil de Diego Portella" className="object-cover w-full h-full grayscale-15 contrast-110" />
           <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-zinc-50 dark:from-[#08090a] via-zinc-50/80 dark:via-[#08090a]/80 to-transparent" />
         </div>
       </div>

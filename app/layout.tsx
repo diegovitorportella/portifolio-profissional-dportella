@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,13 +14,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // suppressHydrationWarning é necessário para o next-themes funcionar sem erros no console
   return (
     <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
       <body className="antialiased bg-zinc-50 dark:bg-[#08090a] text-zinc-900 dark:text-zinc-50 min-h-screen flex flex-col transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <Navbar />
-          {children}
+          <LanguageProvider>
+            <Navbar />
+            {children}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
