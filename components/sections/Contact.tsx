@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Mail, Send } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+// Adicionamos o FaInstagram na importação abaixo
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { buttonVariants } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -41,6 +42,8 @@ export function Contact() {
             {lang === "pt" ? "Minhas Redes" : "My Networks"}
           </h3>
           <div className="flex flex-col gap-4">
+            
+            {/* E-mail */}
             <a href="mailto:diegoportella1610@gmail.com" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <Mail className="w-6 h-6" />
@@ -51,6 +54,7 @@ export function Contact() {
               </div>
             </a>
 
+            {/* LinkedIn */}
             <a href="https://linkedin.com/in/diegoportella26" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <FaLinkedin className="w-6 h-6" />
@@ -61,6 +65,7 @@ export function Contact() {
               </div>
             </a>
 
+            {/* GitHub */}
             <a href="https://github.com/diegovitorportella" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <FaGithub className="w-6 h-6" />
@@ -70,9 +75,22 @@ export function Contact() {
                 <p className="text-zinc-900 dark:text-zinc-200 font-medium text-[14px]">/diegovitorportella</p>
               </div>
             </a>
+
+            {/* Instagram */}
+            <a href="https://www.instagram.com/_diegoportella_/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
+              <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                <FaInstagram className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="text-[11px] text-zinc-500 dark:text-[#8c929f] font-medium uppercase tracking-wider mb-1">Instagram</p>
+                <p className="text-zinc-900 dark:text-zinc-200 font-medium text-[14px]">@_diegoportella_</p>
+              </div>
+            </a>
+
           </div>
         </div>
 
+        {/* Formulário de Contato */}
         <div className="bg-white dark:bg-[#0d0f12] p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-[#20242c] shadow-sm transition-colors">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
