@@ -1,5 +1,6 @@
 import { About } from "@/components/sections/About";
 import { Resume } from "@/components/sections/Resume";
+import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
@@ -21,6 +22,10 @@ export default function Home() {
 
         <section id="resume" className="py-24 border-t border-zinc-200 dark:border-white/5">
           <Resume />
+        </section>
+
+        <section id="skills" className="py-24 border-t border-zinc-200 dark:border-white/5">
+          <Skills />
         </section>
 
         <section id="projetos" className="py-24 border-t border-zinc-200 dark:border-white/5">

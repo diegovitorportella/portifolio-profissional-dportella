@@ -16,15 +16,15 @@ export function Navbar() {
     setMounted(true);
   }, []);
 
-  // Dicionário da Navbar
+  // Dicionário da Navbar com a nova secção de Skills
   const navLinks = {
     pt: [
-      ["Sobre Mim", "sobre"], ["Resume", "resume"], ["Projetos", "projetos"], 
-      ["Experiências", "experiencias"], ["Contato", "contato"]
+      ["Sobre Mim", "sobre"], ["Resume", "resume"], ["Skills", "skills"],
+      ["Projetos", "projetos"], ["Experiências", "experiencias"], ["Contato", "contato"]
     ],
     en: [
-      ["About Me", "sobre"], ["Resume", "resume"], ["Projects", "projetos"], 
-      ["Experience", "experiencias"], ["Contact", "contato"]
+      ["About Me", "sobre"], ["Resume", "resume"], ["Skills", "skills"],
+      ["Projects", "projetos"], ["Experience", "experiencias"], ["Contact", "contato"]
     ]
   };
 
@@ -52,7 +52,7 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3 border-l border-zinc-200 dark:border-white/10 pl-4 md:pl-6">
-            {/* NOVO: Toggle de Idioma Global na Navbar */}
+            {/* Toggle de Idioma Global na Navbar */}
             {mounted && (
               <div className="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-800/50 p-1 rounded-lg border border-zinc-200 dark:border-white/5 transition-colors">
                 <button

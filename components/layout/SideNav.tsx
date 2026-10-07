@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Link from "next/link";
-// 1. Importando todos os ícones necessários
-import { User, FileText, Code2, Briefcase, Mail } from "lucide-react";
+import { User, FileText, Code2, Briefcase, Mail, Cpu } from "lucide-react";
 
-// 2. Adicionando o ícone correspondente a cada seção no array
 const sections = [
   { id: "sobre", label: { pt: "Sobre Mim", en: "About Me" }, icon: User },
   { id: "resume", label: { pt: "Resume", en: "Resume" }, icon: FileText },
+  { id: "skills", label: { pt: "Skills", en: "Skills" }, icon: Cpu },
   { id: "projetos", label: { pt: "Projetos", en: "Projects" }, icon: Code2 },
   { id: "experiencias", label: { pt: "Experiências", en: "Experience" }, icon: Briefcase },
   { id: "contato", label: { pt: "Contato", en: "Contact" }, icon: Mail },
@@ -72,7 +71,6 @@ export function SideNav() {
               {isActive ? (
                 <div className="relative flex items-center justify-center w-11 h-11 rounded-full border-2 border-dashed border-blue-500/40 bg-zinc-50 dark:bg-[#08090a] shadow-[0_0_15px_rgba(59,130,246,0.15)]">
                   <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-[#11141a] border border-blue-100 dark:border-[#20242c] flex items-center justify-center text-blue-600 dark:text-blue-500">
-                    {/* Renderiza o ícone específico da seção */}
                     <Icon size={16} strokeWidth={2.5} />
                   </div>
                 </div>
