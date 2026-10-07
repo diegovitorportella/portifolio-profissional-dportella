@@ -18,7 +18,7 @@ export function About() {
         </span>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          {lang === "pt" ? "Olá, sou o " : "Hi, I'm "}
+          {lang === "pt" ? "Olá, sou " : "Hi, I'm "}
           <span className="text-blue-500">Diego Portella</span>
         </h1>
         <h2 className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-medium">

@@ -75,27 +75,27 @@ export function Projects() {
             key={project.index} 
             className="group flex flex-col bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] rounded-[14px] overflow-hidden hover:border-blue-500/30 dark:hover:border-[#343b48] hover:-translate-y-1 transition-all duration-200 shadow-sm"
           >
-            {/* Secção Visual (Mockup do Browser com a Imagem) */}
-            <div className="relative h-65 border-b border-zinc-200 dark:border-[#20242c] bg-zinc-50 dark:bg-[#10141b] overflow-hidden transition-colors">
-              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_bottom_right,rgba(59,130,246,0.4),transparent)] pointer-events-none" />
+            {/* Secção Visual: Edge-to-Edge (Ponta a ponta) */}
+            <div className="relative h-64 sm:h-72 border-b border-zinc-200 dark:border-[#20242c] bg-zinc-50 dark:bg-[#10141b] overflow-hidden transition-colors">
               
-              {/* Pontinhos do Browser */}
-              <div className="absolute top-6 right-[10%] left-[10%] h-7 bg-white/80 dark:bg-[#0b0d11]/80 border border-zinc-200 dark:border-white/10 rounded-t-lg flex items-center px-3 gap-1.5 backdrop-blur transition-colors">
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-[#414752]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-[#414752]" />
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-[#414752]" />
+              {/* Barra superior do Browser (Moldura colada no topo e laterais) */}
+              <div className="absolute top-0 right-0 left-0 h-9 bg-white/90 dark:bg-[#0b0d11]/90 border-b border-zinc-200 dark:border-white/10 flex items-center px-4 gap-1.5 backdrop-blur transition-colors z-10">
+                <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#414752]" />
+                <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#414752]" />
+                <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#414752]" />
               </div>
               
-              {/* Moldura da Imagem */}
-              <div className="absolute top-14 right-[10%] -bottom-7.5 left-[10%] bg-white dark:bg-[#0c0e12] border border-zinc-200 dark:border-white/10 rounded-t-sm shadow-md transition-colors overflow-hidden">
+              {/* Imagem preenchendo 100% do espaço restante */}
+              <div className="absolute top-9 right-0 bottom-0 left-0 bg-white dark:bg-[#0c0e12] overflow-hidden">
                  <img 
                   src={`/${project.image_filename}`} 
                   alt={`Screenshot do projeto ${project.title}`} 
-                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500"
                 />
               </div>
 
-              <span className="absolute right-3 bottom-1.5 text-zinc-200/50 dark:text-white/5 text-[65px] font-bold leading-none select-none pointer-events-none">
+              {/* Número translúcido no canto */}
+              <span className="absolute right-3 bottom-1.5 text-zinc-900/10 dark:text-white/5 text-[65px] font-bold leading-none select-none pointer-events-none z-10">
                 {project.index}
               </span>
             </div>
