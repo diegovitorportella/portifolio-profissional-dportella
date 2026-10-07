@@ -58,7 +58,7 @@ export function About() {
         <div className="absolute bottom-0 right-0 w-6 h-6 border-b-[3px] border-r-[3px] border-blue-500" />
 
         <div className="w-full h-full relative overflow-hidden bg-zinc-100 dark:bg-[#0d0f12] border border-zinc-200 dark:border-white/5 rounded-sm">
-          <img src="/perfil.png" alt="Foto de perfil de Diego Portella" className="object-cover w-full h-full grayscale-15 contrast-110" />
+          <img src="/foto-perfil.png" alt="Foto de perfil de Diego Portella" className="object-cover w-full h-full grayscale-15 contrast-110" />
         </div>
       </div>
     </div>
