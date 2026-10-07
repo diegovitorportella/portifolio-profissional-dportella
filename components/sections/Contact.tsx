@@ -1,23 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Mail, Send } from "lucide-react";
-// Adicionamos o FaInstagram na importação abaixo
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { buttonVariants } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
   const { lang } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.current) return;
+    
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert(lang === "pt" ? "Formulário pronto para ser conectado ao EmailJS!" : "Form ready to be connected to EmailJS!");
-      setIsSubmitting(false);
-    }, 1000);
+
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then(
+        () => {
+          alert(lang === "pt" ? "Mensagem enviada com sucesso!" : "Message sent successfully!");
+          form.current?.reset();
+        },
+        (error: unknown) => {
+          console.error("Erro ao enviar:", error);
+          alert(lang === "pt" ? "Ocorreu um erro. Tente novamente mais tarde." : "An error occurred. Please try again later.");
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -43,7 +62,6 @@ export function Contact() {
           </h3>
           <div className="flex flex-col gap-4">
             
-            {/* E-mail */}
             <a href="mailto:diegoportella1610@gmail.com" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <Mail className="w-6 h-6" />
@@ -54,7 +72,6 @@ export function Contact() {
               </div>
             </a>
 
-            {/* LinkedIn */}
             <a href="https://linkedin.com/in/diegoportella26" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <FaLinkedin className="w-6 h-6" />
@@ -65,7 +82,6 @@ export function Contact() {
               </div>
             </a>
 
-            {/* GitHub */}
             <a href="https://github.com/diegovitorportella" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <FaGithub className="w-6 h-6" />
@@ -76,7 +92,6 @@ export function Contact() {
               </div>
             </a>
 
-            {/* Instagram */}
             <a href="https://www.instagram.com/_diegoportella_/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#0d0f12] border border-zinc-200 dark:border-[#20242c] hover:border-zinc-300 dark:hover:border-[#343b48] hover:bg-zinc-50 dark:hover:bg-transparent hover:-translate-y-1 transition-all duration-200 group shadow-sm">
               <div className="p-3 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition-colors">
                 <FaInstagram className="w-6 h-6" />
@@ -90,9 +105,8 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Formulário de Contato */}
         <div className="bg-white dark:bg-[#0d0f12] p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-[#20242c] shadow-sm transition-colors">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
               <label htmlFor="name" className="text-[13px] font-medium text-zinc-700 dark:text-zinc-300">
                 {lang === "pt" ? "Nome" : "Name"}
@@ -100,6 +114,7 @@ export function Contact() {
               <input 
                 type="text" 
                 id="name" 
+                name="name"
                 required
                 className="w-full bg-zinc-50 dark:bg-[#08090a] border border-zinc-200 dark:border-[#20242c] rounded-lg px-4 py-3 text-zinc-900 dark:text-zinc-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder:text-zinc-400 dark:placeholder:text-[#414752]"
                 placeholder={lang === "pt" ? "Como posso te chamar?" : "What should I call you?"}
@@ -110,6 +125,7 @@ export function Contact() {
               <input 
                 type="email" 
                 id="email" 
+                name="email"
                 required
                 className="w-full bg-zinc-50 dark:bg-[#08090a] border border-zinc-200 dark:border-[#20242c] rounded-lg px-4 py-3 text-zinc-900 dark:text-zinc-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder:text-zinc-400 dark:placeholder:text-[#414752]"
                 placeholder={lang === "pt" ? "voce@email.com" : "you@email.com"}
@@ -121,6 +137,7 @@ export function Contact() {
               </label>
               <textarea 
                 id="message" 
+                name="message"
                 required
                 rows={4}
                 className="w-full bg-zinc-50 dark:bg-[#08090a] border border-zinc-200 dark:border-[#20242c] rounded-lg px-4 py-3 text-zinc-900 dark:text-zinc-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none placeholder:text-zinc-400 dark:placeholder:text-[#414752]"
